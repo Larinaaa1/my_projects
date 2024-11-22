@@ -1,0 +1,42 @@
+class ParaKeyValue(Node):                                    # Производим наследование класса Node
+
+  def __init__(self, key, value, color = 'red'):
+    self.key = key
+    self.value = value
+    super().__init__(key.__hash__())
+
+  def __str__(self):
+    return self.value
+# Родительский класс находится в папке "Задача 4" в файле task_4.py
+
+
+class DictionaryKeyValue():
+  def __init__(self):
+    self.tree = RedBlackTree()
+
+  def Add(self, key, value):
+    self.tree.insert_node(ParaKeyValue(key, value))
+
+  def Get(self, Key):
+    return self.tree.find(Key.__hash__())
+
+
+  def print_tree(self):
+    self.tree.beautiful_print()
+
+##### РЕАЛИЗАЦИЯ НА ПРИМЕРЕ #####
+
+myDict = DictionaryKeyValue()
+
+myDict.Add('1','Один')
+myDict.Add('2','два')
+myDict.Add('3','Три')
+myDict.Add('4','Четыре')
+myDict.Add('5','Пять')
+
+myDict.print_tree()
+
+print()
+
+print(myDict.Get('1'))
+print(myDict.Get('4'))
